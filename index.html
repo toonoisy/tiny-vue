@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TinyVue</title>
+</head>
+<body>
+  <main id="app">
+    <p>{{ meta.date }}</p>
+    <p>
+      <button v-on:click="toggleMsg">ToggleMsg</button>
+      <span>{{ msg }}</span>
+    </p>
+    <p>
+      <input type="text" v-model="value" />
+      <p>{{ value }}</p>
+    </p>
+  </main>
+
+  <script src="./src/dep.js"></script>
+  <script src="./src/observer.js"></script>
+  <script src="./src/watcher.js"></script>
+  <script src="./src/compiler.js"></script>
+  <script src="./src/index.js"></script>
+  <script>
+    const vm = new Instance({
+      el: '#app',
+
+      data: {
+        meta: { 
+          name: 'TinyVue',
+          date: new Date()
+        },
+        msg: 'This is a TinyVue demo page',
+        value: 'Type something here'
+      },
+
+      computed: {
+        sayHello () {
+          return 'Hello, ' + this.meta.name;
+        }
+      },
+
+      methods: {
+        init () {
+          setInterval(() => {
+            this.meta.date = new Date();
+          }, 1000);
+          console.log(this.sayHello);
+        },
+
+        toggleMsg () {
+          this.msg = this.msg === 'This is a TinyVue demo page'
+            ? 'Hello, world!'
+            : 'This is a TinyVue demo page';
+        }
+      }
+    });
+
+    window.onload = vm.init();
+  </script>
+</body>
+</html>
