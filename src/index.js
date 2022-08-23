@@ -1,3 +1,6 @@
+import Compiler from './compiler';
+import Observer from './observer';
+
 class Instance {
   constructor (options = {}) {
     this.$options = options;
@@ -33,7 +36,7 @@ class Instance {
         enumerable: true,
         configurable: true,
         get() {
-          return computed[key].bind(this)();
+          return computed[key].call(this);
         },
         set() {}
       })
@@ -53,3 +56,5 @@ class Instance {
     });
   }
 }
+
+export default Instance;

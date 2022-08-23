@@ -1,3 +1,5 @@
+import Dep from './dep';
+
 class Observer {
   constructor (data) {
     this.observe(data);
@@ -31,3 +33,5 @@ class Observer {
     });
   }
 }
+
+export default Observer;

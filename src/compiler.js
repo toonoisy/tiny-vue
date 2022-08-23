@@ -1,3 +1,5 @@
+import Watcher from './watcher';
+
 class Compiler {
   constructor (el, vm) {
     this.$vm = vm;
@@ -71,3 +73,5 @@ class Compiler {
     }
   }
 }
+
+export default Compiler;

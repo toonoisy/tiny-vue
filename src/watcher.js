@@ -1,3 +1,5 @@
+import Dep from './dep';
+
 class Watcher {
   constructor (key, vm, callback) {
     this.$vm = vm;
@@ -29,3 +31,5 @@ class Watcher {
     this.callback(newValue);
   }
 }
+
+export default Watcher;
